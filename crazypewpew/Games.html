@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<!-- saved from url=(0514)https://html5.gamedistribution.com/rvvASMiM/20454ead6fe14ae6bd3127efbc813bdb/index.html?gdpr-targeting=1&gd_sdk_referrer_url=https%3A%2F%2Fgameforge.com%2Fen-US%2Flittlegames%2Fcrazy-shooters%2F&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL2dhbWVmb3JnZS5jb20vZW4tdXMvbGl0dGxlZ2FtZXMvY3Jhenktc2hvb3RlcnMvIiwicGFyZW50RG9tYWluIjoiZ2FtZWZvcmdlLmNvbSIsInRvcERvbWFpbiI6ImdhbWVmb3JnZS5jb20iLCJoYXNJbXByZXNzaW9uIjpmYWxzZSwibG9hZGVyRW5hYmxlZCI6dHJ1ZSwiaG9zdCI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidmVyc2lvbiI6IjEuNS4xNyJ9 -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Games_files/debugging-standalone.js.download"></script>
+    
+    
+    <title>Games</title>
+    <link rel="shortcut icon" href="https://html5.gamedistribution.com/rvvASMiM/20454ead6fe14ae6bd3127efbc813bdb/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="./Games_files/style.css">
+    <script async="" type="text/javascript" src="./Games_files/prebid-idhb-v8.51a.min.js.download"></script><script src="./Games_files/f.txt"></script><script id="gamedistribution-jssdk" src="./Games_files/main.min.js.download"></script><script src="./Games_files/UnityProgress.js.download"></script>  
+    <script src="./Games_files/UnityLoader.js.download"></script>
+    <script>
+	
+	function InitApi(_appId) 
+    {
+		gameKey = _appId;
+		userId = "";
+	
+		window["GD_OPTIONS"] = {
+			"debug": false, // Enable debugging console. This will set a value in local storage as well, remove this value if you don't want debugging at all. You can also call it by running gdsdk.openConsole() within your browser console.
+			"gameId": gameKey, // Your gameId which is unique for each one of your games; can be found at your Gamedistribution.com account.
+			"userId": userId, // Your userId which can be found at your Gamedistribution.com account.
+			"onEvent": function(event) {
+				switch (event.name) {
+					case "SDK_GAME_START":
+						gameInstance.SendMessage('GameDistribution', 'ResumeGame');
+						break;
+					case "SDK_GAME_PAUSE":
+						gameInstance.SendMessage('GameDistribution', 'PauseGame');
+						break;
+					case "SDK_ERROR":					
+						break;
+				}
+			},
+		};
+		
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = '//html5.api.gamedistribution.com/main.min.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'gamedistribution-jssdk'));
+    }
+    
+    function ExternEval() 
+    {
+        console.log('ExternEval');
+		
+		//gameInstance.SendMessage('GameDistribution', 'AdMessage', 'CallAd');
+       
+		 if (typeof gdsdk !== "undefined")
+		  {	  
+			gdsdk.showBanner(); 
+		  }
+    }
+	
+	function PreloadRewarded() 
+    {
+        console.log('PreloadRewarded');
+		
+		//gameInstance.SendMessage('GameDistribution', 'AdMessage', 'CallAd');
+       
+		if (typeof gdsdk !== "undefined")
+		{	  
+			if (gdsdk !== 'undefined' && gdsdk.preloadAd !== 'undefined') {
+			  gdsdk
+				.preloadAd('rewarded')
+				.then(response => {
+				  // A rewarded ad can be shown to user when he/she clicked it.
+				  gameInstance.SendMessage('GameDistribution', 'RewardedReady');
+				})
+				.error(error => {
+				  // Any Rewarded ad is not available to user.
+				  gameInstance.SendMessage('GameDistribution', 'RewardedError');
+				});
+			}
+
+		}
+    }
+	
+	function ShowRewarded() 
+    {
+        console.log('ShowRewarded');
+		
+		//gameInstance.SendMessage('GameDistribution', 'AdMessage', 'CallAd');
+       
+		 if (gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') 
+		 {
+			gdsdk.showAd('rewarded');
+		  }
+    }
+	
+	InitApi("20454ead6fe14ae6bd3127efbc813bdb");
+	
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/game.json", {onProgress: UnityProgress});
+	  
+	    function FitScreen(){
+       var w = window.innerWidth;
+       var h = window.innerHeight;
+       var availWidth = window.innerWidth;
+       var availHeight = window.innerHeight;
+	   
+       var canvas = document.getElementById("#canvas");
+       if(availWidth/availHeight>w/h){
+         height = availHeight;
+         width = (height*w/h);
+      }else{
+         width = availWidth;
+         height = width*h/w;
+      }
+	  
+      canvas.width = width;
+      canvas.height = height;
+	  
+       document.getElementById("gameContainer").style.width=width + "px";
+       document.getElementById("gameContainer").style.height=height + "px";
+	   
+    }
+
+    </script>
+  <script type="text/javascript" async="" src="./Games_files/saved_resource" id="locus"></script><script type="text/javascript" async="" src="./Games_files/js" id="gdsdk_google_analytics"></script><script type="text/javascript" async="" crossorigin="anonymous" data-ad-client="ca-pub-2316275586951220" data-ad-frequency-hint="30s" allow="autoplay" src="./Games_files/f(1).txt" id="afg" data-checked-head="true"></script><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9wSqI5i0iwGdf6L1CERNdmsTPgVu44ewj8QxTBYgsv1LCPUVF7YmWOvTappqB1139jAymxUW/RO8zmMqo4zlAAAAACNeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MzY4MTI4MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A+d7vJfYtay4OUbdtRPZA3y7bKQLsxaMEPmxgfhBGqKXNrdkCQeJlUwqa6EBbSfjwFtJWTrWIioXeMW+y8bWAgQAAACTeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MzY4MTI4MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="./Games_files/headerlift.min.js.download" id="gdsdk_prebid"></script><script type="text/javascript" async="" src="./Games_files/saved_resource(1)" id="blckrmv"></script><script type="text/javascript" async="" src="./Games_files/socket.io.js.download" id="soecket.io.js"></script></head>
+  <body onfocus="FitScreen();" onload="FitScreen();" onresize="FitScreen();" data-extension-installed="2.4.9">
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 1053px; height: 925px; padding: 0px; margin: 0px; border: 0px; position: relative; background: rgb(35, 31, 32);"><canvas id="#canvas" style="cursor: default;" width="1053" height="925"></canvas><div class="logo Dark" style="display: none;"></div><div class="progress Dark" style="display: none;"><div class="empty" style="width: 0%;"></div><div class="full" style="width: 100%;"></div></div></div>
+    </div>
+  
+<ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done"><div id="aswift_0_host" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"></div></ins><script src="blob:https://html5.gamedistribution.com/2ebae192-b60b-4f8c-acf1-f2da00f143f0"></script><script src="blob:https://html5.gamedistribution.com/fd163b14-1457-466c-8e8e-4b8bc979704c"></script><style type="text/css" id="gd__adblocker__style">
+.close-button {
+    position: fixed; 
+    top: 10px; 
+    right: 10px; 
+    font-size: 24px; 
+    cursor: pointer; 
+    background-color: red; 
+    color: white; 
+    border: none; 
+    padding: 5px;
+    border-radius: 50%;
+    display: none;
+    z-index: 1111;
+}
+.gd__adblocker__button {
+  position: relative;
+  text-align: center;
+  height: 50px;
+  cursor: pointer;
+  font-size: large;
+  font-family: monospace;
+  background-color: #ff8c1c;
+  border-radius: 0px;
+  color: white;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.gd__adblocker__button > p {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  height: 100%;
+  top: 30%;
+  color: white;
+  font-weight: 600;
+  font-family: arial;
+}
+
+.gd__adblocker__logo {
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  z-index: 2000;
+  cursor: pointer;
+  top: calc(20% - 50px);
+  left: calc(50% - 50px);
+}
+
+.logo__1 {
+  background: url("https://static.gamedistribution.com/introduction-block-logo.png")
+    no-repeat;
+  background-size: cover;
+}
+
+.logo__2 {
+  background: url("https://static.gamedistribution.com/block-logo.png")
+    no-repeat;
+  background-size: cover;
+}
+.logo__3 {
+  background: url("https://static.gamedistribution.com/abp.png") no-repeat;
+  background-size: cover;
+}
+
+.logo__4 {
+  background: url("https://static.gamedistribution.com/UBlockOrigin.png") no-repeat;
+  background-size: cover;
+}
+
+.logo__5 {
+  background: url("https://static.gamedistribution.com/other.png") no-repeat;
+  background-size: cover;
+}
+
+.gd__adblocker__container {
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 auto;
+  max-width: 90%;
+  background: white;
+  position: relative;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.textLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.videoButton {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  float: right;
+  margin-right: 20px;
+  transition: background-color 0.3s ease;
+  animation: flashing 1s infinite;
+}
+
+.videoButton:hover {
+  background-color: #45a049;
+}
+
+.videoButton:active {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.video-button-container {
+  position: absolute;
+  width: 100%;
+  float: right;
+  right: 0;
+}
+
+.gd__adblocker__overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 1999;
+  cursor: pointer;
+
+  font-family: arial;
+  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.gd__adblocker__text {
+  text-align: center;
+  position: relative;
+  margin: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 0px;
+  padding: 5px 0px 0px 0px;
+  color: white;
+  top: 1.5rem;
+}
+
+.gd__adblocker__text__container {
+  height: 4rem;
+  background: red;
+}
+
+.tabs {
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  background: white;
+  width: auto;
+  height: 100%;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs input[name="tab-control"] {
+  display: none;
+}
+
+.tabs ul {
+  list-style-type: none;
+  padding-left: 0;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.tabs ul li {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 0 10px;
+  text-align: center;
+  position: relative;
+}
+
+.tabs ul li label {
+  transition: all 0.3s ease-in-out;
+  color: #666;
+  padding: 5px auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.tabs ul li label span {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.tabs ul li label br {
+  display: none;
+}
+
+.tabs ul li label:hover {
+  background: aliceblue;
+}
+
+.tabs .slider {
+  position: relative;
+  height: 4px;
+  background: #ff8c1c;
+  border-radius: 1px;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+  z-index: 1;
+  top: -1rem;
+}
+
+.content {
+  height: 70vh;
+}
+
+.content section {
+  display: none;
+  animation: content 0.3s ease-in-out 1;
+  line-height: 1.4;
+  width: 100%;
+  height: calc(100% - 7rem);
+  background: gray;
+  overflow: hidden;
+
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+input[id="tab1"]:checked ~ .slider {
+  left: 0;
+  width: 20%;
+}
+
+input[id="tab2"]:checked ~ .slider {
+  left: 20%;
+  width: 20%;
+}
+
+input[id="tab3"]:checked ~ .slider {
+  left: 40%;
+  width: 20%;
+}
+
+input[id="tab4"]:checked ~ .slider {
+  left: 60%;
+  width: 20%;
+}
+
+input[id="tab5"]:checked ~ .slider {
+  left: 80%;
+  width: 20%;
+}
+
+input[id="tab1"]:checked ~ .content section:nth-of-type(1) {
+  display: block;
+}
+
+input[id="tab2"]:checked ~ .content section:nth-of-type(2) {
+  display: block;
+}
+
+input[id="tab3"]:checked ~ .content section:nth-of-type(3) {
+  display: block;
+}
+
+input[id="tab4"]:checked ~ .content section:nth-of-type(4) {
+  display: block;
+}
+
+input[id="tab5"]:checked ~ .content section:nth-of-type(5) {
+  display: block;
+}
+
+@keyframes content {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes flashing {
+    0% { background-color: #f4b476; }
+    50% { background-color: #ff8c1c; } 
+    100% { background-color: #f4b476; }
+}
+
+@media (max-width: 768px) {
+  .gd__adblocker__text {
+    font-size: .7rem;
+    top: 1.5rem;
+  }
+
+  .gd__adblocker__text_container {
+    font-size: 1rem;
+    height: 3rem;
+    padding-top: 2rem;
+  }
+  .gd__adblocker__button {
+    margin-top: 5px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+.video-modal-content {
+    width: 90%!important;
+  }
+}
+
+@media (max-height: 600px) {
+  .gd__adblocker__container {
+    width: 90% !important;
+    max-width: 100% !important;
+    top: 0;
+    height: 98vh;
+  }
+
+  .tabs {
+    flex-direction: row;
+  }
+
+  .tabs > ul {
+    margin: 0;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    width: 20%;
+    justify-content: center;
+    flex: 0;
+    line-height: 0.6rem;
+    align-items: center;
+    font-size: 0.7rem;
+    margin-top: 5px;
+
+    li {
+      margin-top: 1rem;
+
+      label span {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  .slider {
+    display: none;
+  }
+  .content {
+    flex: 1;
+    height: 100vh;
+  }
+
+  .gd__adblocker__button {
+    margin-top: 5px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .gd__adblocker__text {
+    font-size: 1rem;
+    top: 1.2rem;
+  }
+
+  .gd__adblocker__text__container {
+    height: 3rem;
+  }
+
+  .tabs ul::after {
+    box-shadow: 0px 0px 0px black !important;
+    height: 0px !important;
+  }
+  .tabs ul {
+    box-shadow: 10px 0px 15px -5px rgba(0, 0, 0, 0.3);
+    margin-bottom: -2rem;
+    margin-top: 0rem;
+  }
+}
+
+.tabs ul::after {
+  content: "";
+  display: block;
+  width: calc(100% - 5px);
+  height: 10px;
+  box-shadow: 0px 7px 10px #e0e0e0;
+}
+.video-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.video-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black; 
+    padding: 20px; 
+    width: 40rem;
+
+  video {
+    width: 100%;
+  }
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #ff8c1c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+</style><div id="gd__adblocker__overlay" class="gd__adblocker__overlay">
+<div id="gd__adblocker__container" class="gd__adblocker__container">
+    <div class="tabs">
+     <span id="closeButton" class="close-button" style="display: block;">×</span>
+        <input type="radio" id="tab1" name="tab-control" checked="">
+        <input type="radio" id="tab2" name="tab-control">
+        <input type="radio" id="tab3" name="tab-control">
+        <input type="radio" id="tab4" name="tab-control">
+        <input type="radio" id="tab5" name="tab-control">
+        <ul>
+            <li id="li1">
+                <label for="tab1" role="button">
+                    <br><span class="gd__adblocker__logo logo__1"></span>
+                    Introduction
+                </label>
+            </li>
+            <li id="li2">
+                <label for="tab2" role="button">
+                    <br><span class="gd__adblocker__logo logo__2"></span>
+                    AdBlock
+                </label>
+            </li>
+            <li id="li3">
+                <label for="tab3" role="button">
+                    <br><span class="gd__adblocker__logo logo__3"></span>
+                    AdBlock Plus
+                </label>
+            </li>
+            <li id="li4">
+                <label for="tab4" role="button">
+                    <br><span class="gd__adblocker__logo logo__4"></span>
+                    uBlockOrigin
+                </label>
+            </li>
+            <li id="li5">
+                <label for="tab5" role="button">
+                    <br><span class="gd__adblocker__logo logo__5"></span>
+                    Other
+                </label>
+            </li>
+        </ul>
+        <div class="slider">
+            <div class="indicator"></div>
+        </div>
+            <div class="content">
+                <div class="gd__adblocker__text__container">
+                    <p id="gd__adblocker__text" class="gd__adblocker__text">Please select the ad blocker you are using</p>
+                </div>
+                <section>
+            <div id="video-button-container1" class="video-button-container">
+                <button id="videoButton1" class="videoButton">Video Tutorial</button>
+            </div>
+        <iframe src="./Games_files/Introduction-en.html"></iframe></section>
+                <section>
+            <div id="video-button-container2" class="video-button-container">
+                <button id="videoButton2" class="videoButton">Video Tutorial</button>
+            </div>
+        <iframe src="./Games_files/Adblock-en.html"></iframe></section>
+                <section>
+            <div id="video-button-container3" class="video-button-container">
+                <button id="videoButton3" class="videoButton">Video Tutorial</button>
+            </div>
+        <iframe src="./Games_files/AdblockPLUS-en.html"></iframe></section>
+                <section>
+            <div id="video-button-container4" class="video-button-container">
+                <button id="videoButton4" class="videoButton">Video Tutorial</button>
+            </div>
+        <iframe src="./Games_files/uBlockOrigin-en.html"></iframe></section>
+                <section>
+            <div id="video-button-container5" class="video-button-container">
+                <button id="videoButton5" class="videoButton">Video Tutorial</button>
+            </div>
+        <iframe src="./Games_files/Others-en.html"></iframe></section>
+                <div id="gd__adblocker__button" title="AdBlocker" class="gd__adblocker__button">
+                    <p>Refresh Page</p>
+                </div>
+            </div>
+        
+    </div>
+</div>
+    <div id="videoModal" class="video-modal" style="display:none;">
+        <div class="video-modal-content">
+            <span id="closeModal" class="close">×</span>
+            <video controls="" autoplay="">
+                <source src="https://static.gamedistribution.com/ad-block/tr/AdblockPLUS-tr.mkv" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div></body></html>
